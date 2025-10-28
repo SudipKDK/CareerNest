@@ -1,6 +1,18 @@
 import User from "../models/user.js";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
+
+//generate token
+const generateToken = (userId)=>{
+  return jwt.sign(
+    {id:userId},
+    process.env.JWT_SECRET,
+    {expiresIn:process.env.JWT_EXPIRES}
+  );
+}
+
+//signup controller
 export const signup = async (req, res) => {
   try {
     const { firstName, lastName, email, phone, password, userType } = req.body;
@@ -30,15 +42,18 @@ export const signup = async (req, res) => {
     });
     await user.save();
 
+    const token = generateToken(user._id);
+
     res.status(201).json({
       message: "user registered successfully",
+      token: token,
       user: {
         id: user._id,
-        fistName: firstName,
+        firstName: firstName,
         lastName: lastName,
         email: email,
         phone: phone,
-        userType: userType,
+        userType: user.userType,
       },
     });
   } catch (error) {
@@ -50,6 +65,7 @@ export const signup = async (req, res) => {
   }
 };
 
+//login controller
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -71,9 +87,11 @@ export const login = async (req, res) => {
         message: "wrong password",
       });
     }
+    const token = generateToken(user._id);
+
     res.status(200).json({
       message: "Login successful",
-
+      token: token,
       user: {
         id: user._id,
         firstName: user.firstName,
