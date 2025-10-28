@@ -3,7 +3,6 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv, { config } from 'dotenv';
 import connectdb from './config/connectdb.js';
-import path from "path";
 import authRoutes from './routes/auth.js'
 import staticRoutes from './routes/static.js'
 
@@ -12,9 +11,6 @@ connectdb();
 
 const app =express()
 const PORT = process.env.PORT || 3000;
-
-app.set("view engine","ejs");
-app.set("views",path.join(process.cwd(),"views"));
 
 app.use(cors());
 app.use(bodyParser.json());
