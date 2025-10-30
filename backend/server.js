@@ -5,6 +5,7 @@ import dotenv, { config } from 'dotenv';
 import connectdb from './config/connectdb.js';
 import authRoutes from './routes/auth.js'
 import staticRoutes from './routes/static.js'
+import jobRoutes from './routes/jobs.js'
 
 dotenv.config();
 connectdb();
@@ -15,8 +16,12 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
+
+
+
 app.use('/',staticRoutes)
 app.use('/api/auth',authRoutes)
+app.use('/api',jobRoutes);
 
 app.listen(PORT,()=>{
     console.log(`Server is running at port ${PORT}`);
