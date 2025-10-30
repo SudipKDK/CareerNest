@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Jobs - CareerNest</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/jobs.css">
+</head>
+<body>
+  <nav>
+    <h1 onclick="window.location.href='home.html'">CareerNest</h1>
+    <div class="nav-buttons">
+      <button class="btn-home" onclick="window.location.href='home.html'">Home</button>
+      <span id="userInfo" class="user-info"></span>
+      <div id="authButtons"></div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>All Jobs</h2>
+    <div id="message"></div>
+    <div id="jobsList">
+      <div class="loading">Loading jobs...</div>
+    </div>
+  </div>
+
+  <script src="js/jobs.js"></script>
+</body>
+</html>

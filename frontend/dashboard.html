@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - CareerNest</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+  <nav>
+    <h1 onclick="window.location.href='home.html'">CareerNest</h1>
+    <div class="nav-buttons">
+      <button class="btn-home" onclick="window.location.href='home.html'">Home</button>
+      <button class="btn-jobs" onclick="window.location.href='jobs.html'">Browse Jobs</button>
+      <span id="userInfo" class="user-info"></span>
+      <button class="btn-logout" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="card">
+      <h2>Create New Job</h2>
+      <div id="createMessage"></div>
+      <form onsubmit="createJob(event)">
+        <div class="form-group">
+          <label>Job Title *</label>
+          <input type="text" id="title" required>
+        </div>
+        <div class="form-group">
+          <label>Company *</label>
+          <input type="text" id="company" required>
+        </div>
+        <div class="form-group">
+          <label>Location *</label>
+          <input type="text" id="location" required>
+        </div>
+        <div class="form-group">
+          <label>Category *</label>
+          <input type="text" id="category" required>
+        </div>
+        <div class="form-group">
+          <label>Description *</label>
+          <textarea id="description" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>Job Type</label>
+          <select id="jobType">
+            <option value="full-time">Full-time</option>
+            <option value="part-time">Part-time</option>
+            <option value="contract">Contract</option>
+            <option value="internship">Internship</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Salary</label>
+          <input type="text" id="salary" placeholder="e.g. $120,000 - $150,000">
+        </div>
+        <div class="form-group">
+          <label>Skills (comma separated)</label>
+          <input type="text" id="skills" placeholder="e.g. React, Node.js, MongoDB">
+        </div>
+        <button type="submit">Post Job</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>My Jobs</h2>
+      <div id="myJobsMessage"></div>
+      <div id="myJobsList">
+        <div class="loading">Loading your jobs...</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+/* Dashboard Page Specific Styles */
+
+.job-card {
+  background-color: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border-left: 4px solid #4CAF50;
+}
+
+.job-card h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.job-card p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.job-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.job-actions button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: opacity 0.3s;
+}
+
+.job-actions button:hover {
+  opacity: 0.8;
+}
+
+.btn-edit {
+  background-color: #ff9800;
+  color: white;
+}
+
+.btn-delete {
+  background-color: #f44336;
+  color: white;
+}
+
