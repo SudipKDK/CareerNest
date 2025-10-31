@@ -19,7 +19,7 @@ window.onload = function() {
       document.getElementById('myJobsSection').style.display = 'block';
     } else {
       document.getElementById('createJobSection').style.display = 'none';
-      document.getElementById('myJobsSection').stylea.display = 'none';
+      document.getElementById('myJobsSection').style.display = 'none';
     }
   }
   loadMyJobs();

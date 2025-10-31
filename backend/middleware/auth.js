@@ -60,3 +60,19 @@ export const restrictToEmployer = (req, res, next) => {
 
   next();
 };
+
+export const restrictToJobseeker = (req, res, next) => {
+  if (!req.user) {
+    return res.status(401).json({
+      success: false,
+      message: "not authorized"
+    })
+  }
+  if(req.user.userType !== 'jobseeker'){
+    return res.status(403).json({
+      success: false,
+      message: "access denied"
+    })
+  }
+  next();
+};
