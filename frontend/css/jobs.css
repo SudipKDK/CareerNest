@@ -1,0 +1,41 @@
+/* Jobs Page Specific Styles */
+
+.job-card {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.job-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.job-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.job-company {
+  color: #666;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.job-meta {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.job-description {
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+

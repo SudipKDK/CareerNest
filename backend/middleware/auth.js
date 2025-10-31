@@ -43,3 +43,20 @@ export const protect = async (req, res, next) => {
     });
   }
 };
+export const restrictToEmployer = (req, res, next) => {
+  if (!req.user) {
+    return res.status(401).json({
+      success: false,
+      message: "Not authorized"
+    });
+  }
+
+  if (req.user.userType !== 'employer') {
+    return res.status(403).json({
+      success: false,
+      message: "Access denied. Only employers can create jobs."
+    });
+  }
+
+  next();
+};

@@ -1,47 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Login</title>
-    <style>
-      body {
-        font-family: Arial;
-        text-align: center;
-        padding: 50px;
-      }
-      input {
-        margin: 5px;
-        padding: 8px;
-        width: 200px;
-      }
-      button {
-        padding: 8px 16px;
-        cursor: pointer;
-      }
-    </style>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <title>Login - CareerNest</title>
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+  <div class="auth-container">
     <h2>Login</h2>
-    <input id="email" placeholder="Email" /><br />
-    <input id="password" type="password" placeholder="Password" /><br />
+    <input id="email" type="email" placeholder="Email" required><br>
+    <input id="password" type="password" placeholder="Password" required><br>
     <button onclick="login()">Login</button>
 
     <p id="message"></p>
 
-    <script>
-      async function login() {
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
+    <div class="links">
+      <a href="signup.html">Don't have an account? Sign up</a><br>
+      <a href="home.html">Back to Home</a>
+    </div>
+  </div>
 
-        const res = await fetch("http://localhost:3000/api/auth/login", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, password }),
-        });
-
-        const data = await res.json();
-        document.getElementById("message").textContent = data.message;
-      }
-    </script>
-  </body>
+  <script src="js/login.js"></script>
+</body>
 </html>
