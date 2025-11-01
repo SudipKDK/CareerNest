@@ -9,11 +9,24 @@
 </head>
 <body>
   <nav>
-    <h1 onclick="window.location.href='home.html'">CareerNest</h1>
+    <h1 onclick="window.location.href='home.html'">🎯 CareerNest</h1>
     <div class="nav-buttons">
       <button class="btn-home" onclick="window.location.href='home.html'">Home</button>
-      <span id="userInfo" class="user-info"></span>
+      <button class="btn-browse" onclick="window.location.href='jobs.html'">Browse Jobs</button>
       <div id="authButtons"></div>
+      <div id="profileDropdown" class="profile-dropdown" style="display: none;">
+        <button class="btn-profile" onclick="toggleProfileMenu()">
+          <div class="user-avatar" id="userAvatar"></div>
+          <span class="user-name" id="userName"></span>
+          <span class="chevron-down">▼</span>
+        </button>
+        <div id="profileMenu" class="profile-menu">
+          <a href="dashboard.html" class="dropdown-item">📊 Dashboard</a>
+          <a href="#" class="dropdown-item" onclick="viewProfile()">👤 Profile</a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item" onclick="logout()">🚪 Logout</a>
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -22,6 +35,27 @@
     <div id="message"></div>
     <div id="jobsList">
       <div class="loading">Loading jobs...</div>
+    </div>
+  </div>
+
+  <!-- Application Modal -->
+  <div id="applicationModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeApplicationModal()">&times;</span>
+      <h2>Apply for Job</h2>
+      <div id="applicationMessage"></div>
+      <form onsubmit="submitApplication(event)">
+        <div class="form-group">
+          <label>Cover Letter *</label>
+          <textarea id="coverLetter" required placeholder="Why are you interested in this position?"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Resume (Paste your resume here) *</label>
+          <textarea id="resume" required placeholder="Copy and paste your resume or write a brief summary of your experience"></textarea>
+        </div>
+        <button type="submit">Submit Application</button>
+        <button type="button" onclick="closeApplicationModal()">Cancel</button>
+      </form>
     </div>
   </div>
 

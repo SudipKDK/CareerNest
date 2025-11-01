@@ -6,21 +6,98 @@
   <title>CareerNest - Home</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/jobs.css">
 </head>
 <body>
   <nav>
-    <h1 onclick="window.location.href='home.html'">CareerNest</h1>
+    <h1 onclick="window.location.href='home.html'">🎯 CareerNest</h1>
     <div class="nav-buttons">
+      <button class="btn-home" onclick="window.location.href='home.html'">Home</button>
       <button class="btn-browse" onclick="window.location.href='jobs.html'">Browse Jobs</button>
-      <span id="userInfo" class="user-info"></span>
       <div id="authButtons"></div>
+      <div id="profileDropdown" class="profile-dropdown" style="display: none;">
+        <button class="btn-profile" onclick="toggleProfileMenu()">
+          <div class="user-avatar" id="userAvatar"></div>
+          <span class="user-name" id="userName"></span>
+          <span class="chevron-down">▼</span>
+        </button>
+        <div id="profileMenu" class="profile-menu">
+          <a href="dashboard.html" class="dropdown-item">📊 Dashboard</a>
+          <a href="#" class="dropdown-item" onclick="viewProfile()">👤 Profile</a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item" onclick="logout()">🚪 Logout</a>
+        </div>
+      </div>
     </div>
   </nav>
 
   <div class="hero">
-    <h2>Welcome to CareerNest</h2>
-    <p>Find your dream job or the perfect candidate</p>
-    <button class="btn-browse" onclick="window.location.href='jobs.html'">Browse Jobs</button>
+    <h1 class="hero-title">Build Your Career, Shape Your Future</h1>
+    <p class="hero-subtitle">Connect with top employers or discover exceptional talent. Your next opportunity starts here.</p>
+    <div class="hero-buttons">
+      <button class="btn-primary" onclick="window.location.href='jobs.html'">Find Jobs</button>
+      <button class="btn-secondary" onclick="window.location.href='signup.html'">Post a Job</button>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-icon">🔍</div>
+      <h3>Smart Job Search</h3>
+      <p>Find jobs that match your skills and career goals</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🚀</div>
+      <h3>Quick Applications</h3>
+      <p>Apply to multiple jobs with ease in minutes</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💼</div>
+      <h3>Recruit Talent</h3>
+      <p>Post jobs and connect with qualified candidates</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section-header">
+      <h2>Recent Job Openings</h2>
+      <button class="btn-link" onclick="window.location.href='jobs.html'">View All →</button>
+    </div>
+    <div id="recentJobs" class="jobs-grid">
+      <div class="loading">Loading jobs...</div>
+    </div>
+  </div>
+
+  <div class="stats-section">
+    <div class="container">
+      <h2>Trusted by Job Seekers & Employers</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number" id="jobCount">100+</div>
+          <div class="stat-label">Active Jobs</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="appCount">500+</div>
+          <div class="stat-label">Applications</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="userCount">200+</div>
+          <div class="stat-label">Users</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="companyCount">50+</div>
+          <div class="stat-label">Companies</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <div class="container">
+      <h2>Ready to Get Started?</h2>
+      <p>Join thousands of professionals and companies finding success</p>
+      <button class="btn-primary-large" onclick="window.location.href='signup.html'">Create Free Account</button>
+    </div>
   </div>
 
   <script src="js/home.js"></script>

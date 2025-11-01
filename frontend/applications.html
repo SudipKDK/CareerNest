@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Applications - CareerNest</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/applications.css">
+</head>
+<body>
+  <nav>
+    <h1 onclick="window.location.href='home.html'">🎯 CareerNest</h1>
+    <div class="nav-buttons">
+      <button class="btn-home" onclick="window.location.href='home.html'">Home</button>
+      <button class="btn-browse" onclick="window.location.href='jobs.html'">Browse Jobs</button>
+      <div id="profileDropdown" class="profile-dropdown">
+        <button class="btn-profile" onclick="toggleProfileMenu()">
+          <div class="user-avatar" id="userAvatar"></div>
+          <span class="user-name" id="userName"></span>
+          <span class="chevron-down">▼</span>
+        </button>
+        <div id="profileMenu" class="profile-menu">
+          <a href="dashboard.html" class="dropdown-item">📊 Dashboard</a>
+          <a href="#" class="dropdown-item" onclick="viewProfile()">👤 Profile</a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item" onclick="logout()">🚪 Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>My Applications</h2>
+    <div id="message"></div>
+    <div id="applicationsList">
+      <div class="loading">Loading your applications...</div>
+    </div>
+  </div>
+
+  <script src="js/applications.js"></script>
+</body>
+</html>
+

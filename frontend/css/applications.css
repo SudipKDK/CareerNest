@@ -1,0 +1,88 @@
+/* Applications Page Specific Styles */
+
+.application-card {
+  background-color: #FFF8E8;
+  padding: 25px;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(59, 48, 48, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid rgba(121, 87, 87, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.application-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: linear-gradient(180deg, #795757 0%, #664343 100%);
+  transition: width 0.4s ease;
+}
+
+.application-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(59, 48, 48, 0.15);
+  border-color: rgba(121, 87, 87, 0.3);
+}
+
+.application-card:hover::before {
+  width: 6px;
+}
+
+.application-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(121, 87, 87, 0.2);
+}
+
+.application-header h3 {
+  margin: 0 0 5px 0;
+  color: #3B3030;
+  font-size: 18px;
+}
+
+.job-company {
+  color: #795757;
+  margin: 0;
+  font-size: 14px;
+}
+
+.application-details {
+  color: #664343;
+}
+
+.application-details p {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.application-details h4 {
+  margin: 15px 0 5px 0;
+  color: #3B3030;
+  font-size: 15px;
+}
+
+.cover-letter-section,
+.resume-section,
+.notes-section {
+  background-color: #FFF0D1;
+  padding: 12px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.cover-letter-section p,
+.resume-section p,
+.notes-section p {
+  margin: 5px 0 0 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+

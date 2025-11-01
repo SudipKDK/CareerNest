@@ -9,67 +9,219 @@
 </head>
 <body>
   <nav>
-    <h1 onclick="window.location.href='home.html'">CareerNest</h1>
+    <h1 onclick="window.location.href='home.html'">🎯 CareerNest</h1>
     <div class="nav-buttons">
       <button class="btn-home" onclick="window.location.href='home.html'">Home</button>
-      <button class="btn-jobs" onclick="window.location.href='jobs.html'">Browse Jobs</button>
-      <span id="userInfo" class="user-info"></span>
-      <button class="btn-logout" onclick="logout()">Logout</button>
+      <button class="btn-browse" onclick="window.location.href='jobs.html'">Browse Jobs</button>
+      <div id="profileDropdown" class="profile-dropdown">
+        <button class="btn-profile" onclick="toggleProfileMenu()">
+          <div class="user-avatar" id="userAvatar"></div>
+          <span class="user-name" id="userName"></span>
+          <span class="chevron-down">▼</span>
+        </button>
+        <div id="profileMenu" class="profile-menu">
+          <a href="dashboard.html" class="dropdown-item">📊 Dashboard</a>
+          <a href="#" class="dropdown-item" onclick="viewProfile()">👤 Profile</a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item" onclick="logout()">🚪 Logout</a>
+        </div>
+      </div>
     </div>
   </nav>
 
   <div class="container">
-    <div class="card" id="createJobSection">
-      <h2>Create New Job</h2>
-      <div id="createMessage"></div>
-      <form onsubmit="createJob(event)">
-        <div class="form-group">
-          <label>Job Title *</label>
-          <input type="text" id="title" required>
+    <!-- Jobseeker Dashboard -->
+    <div id="jobseekerSection">
+      <div class="dashboard-header">
+        <div>
+          <h1>Dashboard</h1>
+          <p>Welcome back! Here's your career overview</p>
         </div>
-        <div class="form-group">
-          <label>Company *</label>
-          <input type="text" id="company" required>
+      </div>
+      
+      <div class="stats-grid-dashboard">
+        <div class="stat-card-dashboard">
+          <div class="stat-icon">📝</div>
+          <div class="stat-info">
+            <div class="stat-number" id="totalApplications">0</div>
+            <div class="stat-label">Total Applications</div>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Location *</label>
-          <input type="text" id="location" required>
+        <div class="stat-card-dashboard">
+          <div class="stat-icon">⏳</div>
+          <div class="stat-info">
+            <div class="stat-number" id="pendingApps">0</div>
+            <div class="stat-label">Pending</div>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Category *</label>
-          <input type="text" id="category" required>
+        <div class="stat-card-dashboard">
+          <div class="stat-icon">✅</div>
+          <div class="stat-info">
+            <div class="stat-number" id="acceptedApps">0</div>
+            <div class="stat-label">Accepted</div>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Description *</label>
-          <textarea id="description" required></textarea>
+        <div class="stat-card-dashboard">
+          <div class="stat-icon">❌</div>
+          <div class="stat-info">
+            <div class="stat-number" id="rejectedApps">0</div>
+            <div class="stat-label">Rejected</div>
+          </div>
         </div>
+      </div>
+
+      <div class="quick-actions">
+        <h2>Quick Actions</h2>
+        <div class="actions-grid">
+          <button class="action-card" onclick="window.location.href='jobs.html'">
+            <span class="action-icon">🔍</span>
+            <span class="action-text">Browse Jobs</span>
+          </button>
+          <button class="action-card" onclick="window.location.href='applications.html'">
+            <span class="action-icon">📋</span>
+            <span class="action-text">My Applications</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Recent Applications</h2>
+        <div id="recentApplications">
+          <div class="loading">Loading your applications...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Employer Dashboard -->
+    <div id="employerSection">
+      <div class="dashboard-header">
+        <div>
+          <h1>Employer Dashboard</h1>
+          <p>Manage your job postings and applications</p>
+        </div>
+      </div>
+
+      <div class="stats-grid-dashboard">
+        <div class="stat-card-dashboard">
+          <div class="stat-icon">💼</div>
+          <div class="stat-info">
+            <div class="stat-number" id="totalJobs">0</div>
+            <div class="stat-label">Total Jobs</div>
+          </div>
+        </div>
+        <div class="stat-card-dashboard">
+          <div class="stat-icon">📥</div>
+          <div class="stat-info">
+            <div class="stat-number" id="totalApplicationsEmployer">0</div>
+            <div class="stat-label">Total Applications</div>
+          </div>
+        </div>
+        <div class="stat-card-dashboard">
+          <div class="stat-icon">⏳</div>
+          <div class="stat-info">
+            <div class="stat-number" id="pendingApplicationsEmployer">0</div>
+            <div class="stat-label">Pending Reviews</div>
+          </div>
+        </div>
+        <div class="stat-card-dashboard">
+          <div class="stat-icon">✨</div>
+          <div class="stat-info">
+            <div class="stat-number" id="activeJobs">0</div>
+            <div class="stat-label">Active Jobs</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="myJobsSection">
+        <h2>My Job Postings</h2>
+        <div id="myJobsMessage"></div>
+        <div id="myJobsList">
+          <div class="loading">Loading your jobs...</div>
+        </div>
+      </div>
+
+      <div class="card" id="createJobSection">
+        <h2>Create New Job</h2>
+        <div id="createMessage"></div>
+        <form onsubmit="createJob(event)">
+          <div class="form-group">
+            <label>Job Title *</label>
+            <input type="text" id="title" required>
+          </div>
+          <div class="form-group">
+            <label>Company *</label>
+            <input type="text" id="company" required>
+          </div>
+          <div class="form-group">
+            <label>Location *</label>
+            <input type="text" id="location" required>
+          </div>
+          <div class="form-group">
+            <label>Category *</label>
+            <input type="text" id="category" required>
+          </div>
+          <div class="form-group">
+            <label>Description *</label>
+            <textarea id="description" required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Job Type</label>
+            <select id="jobType">
+              <option value="full-time">Full-time</option>
+              <option value="part-time">Part-time</option>
+              <option value="contract">Contract</option>
+              <option value="internship">Internship</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Salary</label>
+            <input type="text" id="salary" placeholder="e.g. $120,000 - $150,000">
+          </div>
+          <div class="form-group">
+            <label>Skills (comma separated)</label>
+            <input type="text" id="skills" placeholder="e.g. React, Node.js, MongoDB">
+          </div>
+          <button type="submit">Post Job</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Applications Modal for Employers -->
+  <div id="applicationsModal" class="modal">
+    <div class="modal-content" style="max-width: 800px;">
+      <span class="close" onclick="closeApplicationsModal()">&times;</span>
+      <h2>Applications</h2>
+      <div id="applicationsMessage"></div>
+      <div id="applicationsList">
+        <div class="loading">Loading applications...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Update Status Modal -->
+  <div id="statusModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeStatusModal()">&times;</span>
+      <h2>Update Application Status</h2>
+      <div id="statusMessage"></div>
+      <form onsubmit="updateApplicationStatus(event)">
         <div class="form-group">
-          <label>Job Type</label>
-          <select id="jobType">
-            <option value="full-time">Full-time</option>
-            <option value="part-time">Part-time</option>
-            <option value="contract">Contract</option>
-            <option value="internship">Internship</option>
+          <label>Status *</label>
+          <select id="applicationStatus" required>
+            <option value="pending">Pending</option>
+            <option value="reviewed">Reviewed</option>
+            <option value="accepted">Accepted</option>
+            <option value="rejected">Rejected</option>
           </select>
         </div>
         <div class="form-group">
-          <label>Salary</label>
-          <input type="text" id="salary" placeholder="e.g. $120,000 - $150,000">
+          <label>Notes (Optional)</label>
+          <textarea id="applicationNotes" placeholder="Add any notes about this application"></textarea>
         </div>
-        <div class="form-group">
-          <label>Skills (comma separated)</label>
-          <input type="text" id="skills" placeholder="e.g. React, Node.js, MongoDB">
-        </div>
-        <button type="submit">Post Job</button>
+        <button type="submit">Update Status</button>
+        <button type="button" onclick="closeStatusModal()">Cancel</button>
       </form>
-    </div>
-
-    <div class="card" id="myJobsSection">
-      <h2>My Jobs</h2>
-      <div id="myJobsMessage"></div>
-      <div id="myJobsList">
-        <div class="loading">Loading your jobs...</div>
-      </div>
     </div>
   </div>
 
